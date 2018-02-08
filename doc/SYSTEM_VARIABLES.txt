@@ -1,0 +1,103 @@
+SYSTEMVARIABLES
+===============
+
+This file describes the phpMyBackupPro system variables stored in $PMBP_SYS_VARS.
+Most of them are unimportant to know, but there are a few variables which activate
+some special features. You can edit them on the configuration page.
+
+$PMBP_SYS_VAR['last_login']
+Contains a string showing information about the last successful login.
+Automatically receives the values from $PMBP_SYS_VAR['last_login'] on each login.
+Modifying makes no sense.
+
+$PMBP_SYS_VAR['this_login']
+Contains a string showing information about the current successful login.
+Is updated automatically on each login.
+Changing makes no sense.
+
+$PMBP_SYS_VAR['security_key']
+Contains a md5 hash which will never change automatically.
+This key must be set in the scheduled backup scripts to trigger a backup.
+It avoids backups triggered by someone else than your backup scripts.
+If you change this key, don't forget to update you backup scripts.
+
+$PMBP_SYS_VAR['dir_lists']
+Controls the directory levels, listed on the 'backup' and 'schedule backup' pages.
+Set to "0" to list no directories, set to "1" to list only directories on level "../",
+set to "2" to list directories on level "../" and "../../". (including subdirectories)
+Try setting to "0" or "1" if you have problems loading the backup pages.
+
+$PMBP_SYS_VAR['C_disable_config']
+If set to to "0", the "configuration" tab will be shown as usual
+If set to to "1", the "configuration" tab will be not be shown.
+To revert the setting, it is necessary to edit the global_conf.php file manually!
+
+$PMBP_SYS_VAR['C_disable_sqlquery']
+If set to to "0", the "sql queries" tab will be shown as usual
+If set to to "1", the "sql queries" tab will be not be shown.
+
+$PMBP_SYS_VAR['memory_limit']
+Specifies how many characters will be stored in the memory before backups are
+written to the disk. This value only takes effect if ini_get("memory_limit") fails.
+Try to increase the value to speed up backups.
+Try to decrease the value to fix memory limit problems. (E.g. "19000000" for 2 mb)
+
+$PMBP_SYS_VAR['scheduled_debug']
+Controlls debug output in scheduled backup mode.
+If set to "1", scheduled backups produce HTML output for debugging.
+If set to "1" and NO debug output is generated, "backup.php" was not found.
+Do not forget to set back to "0" after debugging!
+
+$PMBP_SYS_VAR['schedule_all_dbs']
+Controls which databases are backed up in scheduled backup mode.
+If set to "1", all available databases will be backed up.
+If set to "0", only the selected databases will be backed upd
+You can use this feature if the databases on your server change frequently.
+
+$PMBP_SYS_VAR['except_tables']
+Enter a list of database table names, which should not be included in backups.
+E.g. if set to "test,log" the tables test and log are excluded in all backups
+of all databases! It is not possible to exclude tables from a single database.
+
+$PMBP_SYS_VAR['scheduled_file']
+$PMBP_SYS_VAR['scheduled_dir']
+Contains the values entered on the schedule backup page for the file name and
+directory for the scheduled-backup script.
+Do not change manually but use the schedule backup page.
+
+$PMBP_SYS_VAR['last_scheduled']
+Contains the timestamp when the last scheduled backup was executed.
+Can be reset to 0 to force a backup the next time a scheduled backup script is called.
+
+$PMBP_SYS_VAR['last_scheduled_...']
+Contains the timestamp when the last scheduled backup was executed for the accounts
+in global_conf_sql.php. The enumeration starts with 0 and the order is the same as
+in in global_conf_sql.php and the accounts selection in phpMyBackupPro.
+Can be reset to 0 to force a backup the next time a scheduled backup script is called.
+
+$PMBP_SYS_VAR['ftp_timeout']
+The time in seconds how long it may need to open a connection to a FTP server.
+Can be set to a higher value if there are problems when connecting to a FTP server.
+
+$PMBP_SYS_VAR['dir_email_backup']
+Specifies if directory backups are send by email.
+Set to 1 to send directory backups additional by email. If you don't want to send
+them also via FTP you can enter an invalid FTP server url on the configuration page.
+
+$PMBP_SYS_VAR['B_backup_chmod']
+Specifies the value for the chmod which is executed on the backup files.
+Set this value to e.g. 0700 to make all backup files readable and writable by the
+owner of the file. This usually is the HTTP server. It may be necessary to change the
+value e.g. to 0777 when you use the shell-mode to execute a cron job.
+
+
+
+$PMBP_SYS_VAR['F_...']
+All system variables beginning with F_ contain selections made on the export or the
+schedule backup page.
+Normally there is no need to edit them manually.
+
+$PMBP_SYS_VAR['EXS_...']
+All system variables beginning with EXS_ contain selections made on the schedule backup
+page. They concern special settings for scheduled backups.
+Normally there is no need to edit them manually.

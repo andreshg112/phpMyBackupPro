@@ -1,0 +1,34 @@
+INSTALLATION
+============
+
+You need an HTTP web web server like Apache and PHP (> version 4.3) installed on this server.
+On your client PC you need a web browser which supports JavaScript. I recommend using Mozilla Firefox!
+
+Unzip the phpMyBackupPro zip file to your web servers public html directory (e.g. Apache: xxx/Apache/htdocs/).
+
+
+phpMyBackupPro will only work if you complete the following 3 steps:
+--------------------------------------------------------------------
+1.) For security reasons move the file global_conf.php and the directory export to another directory and maybe change the names.
+Best choice is a directory which is not public. (E.g. xxx/Apache/files/)
+Attention:
+On some systems phpMyBackupPro seems not to get write permissions for the export directory when it is located outside the phpMyBackupPro directory.
+In this case don't move the directory but move the global_conf.php file.
+
+2.) Open the file definitions.php in an editor and change the line 28 and 29 to the paths you moved the global_conf.php and the directory export to.
+These paths must be relative to the file definitions.php. (E.g. ../files/global_conf.php but NOT c:/files/global_conf.php)
+
+3.) Set the rights of the directory export and the file global_conf.php to 0777 (read, write and execute for all).
+(E.g. execute 'chmod 0777 global_conf.php' in a bash session or use the Windows command prompt function)
+
+Now you are (nearly) ready to use phpMyBackupPro!
+
+Load the config.php file in your browser (e.g. http://localhost/phpMyBackupPro/config.php).
+Insert your data (MySQL data, ...). You can get help for the individual pages by clicking on 'help'.
+When you start phpMyBackupPro next time you will be asked to login using your MySQL username and password.
+
+If you need more help or want to report bugs or typos, please visit http://www.phpMyBackupPro.net
+
+Please note that the development of phpMyBackupPro and the website needs plenty of time and money.
+If you are using phpMyBackupPro (especially in a commercial environment) please consider donating to the phpMyBackupPro project.
+You can donate online in only a few minutes on http://www.phpMyBackupPro.net Thank you!

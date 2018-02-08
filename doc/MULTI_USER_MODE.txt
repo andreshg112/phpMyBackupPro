@@ -1,0 +1,20 @@
+MULTI USER MODE
+===============
+
+You can use phpMyBackupPro for several users/accounts of one database.
+
+To do this you have to modify the global_conf_mu.php file and adapt the settings which
+are described inside this file.
+
+You will have to provide the MySQL root account data which are used by phpMyBackupPro
+to determine all available MySQL users.
+
+You can enter a path where the backups will be saved for each user and any user will
+only get access to his own backup files.
+
+The file global_conf.php will still be used to save the settings made on the
+configuration page by each user. Many settings can only be modified by the MySQL root.
+Just configure the global_conf_mu.php and try it out!
+
+Further on you can use the global_conf_mu.php to activate and deactivate features like
+sending backups by email, using FTP uploads or the directory backup feature.

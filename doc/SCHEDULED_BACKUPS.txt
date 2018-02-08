@@ -1,0 +1,72 @@
+SCHEDULED BACKUPS
+=================
+
+This file explains how to set up phpMyBackupPro to make it create MySQL
+backups automatically.
+
+A backup is only triggered when a visitor of your homepage indirectly
+(or without knowing it) calls the schedule script. You can set how often
+a backup is created. phpMyBackupPro takes care of the frequency you set.
+
+There are two popular ways to schedule backups:
+1. by including the schedule script into an existing PHP script or 
+2. by using a hidden frame in a HTML frameset.
+
+In both cases you have to start with this step:
+
+1. You have to generate a schedule script first. Open the page
+"scheduled script" in pMBP and select how often you want a backup to be
+created. Then you have to select the directory of that PHP script which
+will include the schedule script later (e.g. the index.php file in
+your root directory htdocs/). After that select the databases to backup,
+enter a comment and choose the settings for the backups (compression,
+...). When you enabled the directory backup function you can further
+select directories to be backed zp. Finally press the button "show
+script". On the next page you will see the generated schedule script.
+
+Now you have to choose between the following two ways:
+
+
+Including a schedule script into an existing PHP script
+-------------------------------------------------------
+To include the schedule script into another PHP script continue with
+this step:
+
+2.) Now copy the automatically generated code and paste it at the end of
+a PHP script (e.g. index.php) which is placed in the directory you
+selected on the previous page. The line next to the ending of the
+generated code which looks similar to:
+@chdir("dirXYZ/phpMyBackupPro/");
+should point to your installation of pMBP.
+
+2a) Instead of copying the schedule script code to another PHP script
+you can insert an require-command and save the schedule script in an
+extra file. Therefore enter a filename like schedule_backup.php in the
+text box at the bottom of the page in pMBP and press the "Save data"
+button. To include the schedule file in another PHP file enter:
+require_once("schedule_backup.php");
+at the end of the PHP file (e.g. index.php).
+
+
+Using a hidden frame in a HTML frameset
+---------------------------------------
+If you have a homepage which contains a HTML frameset, you can add a
+single frameset as container for the schedule script. To do this
+continue with this step:
+
+2.) Modify that HTML frameset which maybe looks like this:
+
+and add a invisible frame which contains the schedule script (width /
+height = 0) like this:
+
+This frame now runs the schedule script every time a user visizs this
+HTML page.
+
+
+Debugging
+---------
+You can debug the backup scheduling. Go to the "configuration" page,
+click on "System variables" and change the value of "schedule_debug" to
+1 and click "Save data". Now the schedule script prints debug
+informations whenever you open the PHP file in a browser. Don't forget
+to switch this variable back to 0 after you finished debugging!

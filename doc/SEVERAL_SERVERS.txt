@@ -1,0 +1,28 @@
+SEVERAL SERVERS
+===============
+
+You can use one phpMyBackupPro installation to manage the MySQL backups on several servers.
+To do this, install phpMyBackupPro like described in INSTALL.txt first.
+
+Then move the file global_conf_sql.php to another directory. Best location is the same directory as global_conf.php.
+Then update line 33 in definitions.txt (See line 33 for further explanations.)
+
+Set the rights of the file global_conf_sql.php to 0777 (chmod 0777 global_conf_sql.php)
+
+Then insert all you SQL server data and login data in the file. You will find an example in the file.
+Don't insert the server/account data you have already entered under 'configuration' in phpMyBackupPro.
+This username and password will be your login data for the web interface.
+
+Ready!
+
+phpMyBackupPro will recognize the changes. You will see a new drop down box above the menu,
+where you can switch to the server you want to work on.
+
+phpMyBackupPro tries to create one subfolder in your export folder for each server .
+If this should fail, you will have to create the folders manually. You will see the error message
+'Could not store database' when a backup failed because the folder does not exist.
+
+At the moment it is not possible to backup databases from several accounts with one single scheduled backup script.
+You have to create one script for each account. You have to update all scripts if you decrease the number of accounts or their order.
+
+Please consider donating to phpMyBackupPro. Thank you!

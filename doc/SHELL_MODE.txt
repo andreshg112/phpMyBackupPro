@@ -1,0 +1,52 @@
+SHELL MODE
+==========
+
+To use phpMyBackupPro you need to have it installed as described in INSTALL.txt.
+
+Then you can use the script like from a shell and also as a cron-job (see example below):
+
+php backup.php db1[,db2,...] [1 [0 [0 [1 [path1|[path2|... [1 [comment]]]]]]
+
+The first argument contains all databases you want to backup. They must be separated by commas.
+	If you want to backup all databases, which are accessible, you can enter the keyword %%ALL%%
+The second argument specifies whether tables should be backed up (1) or not (0).
+The third argument specifies whether data should be backed up (1) or not (0).
+The fourth argument specifies whether the backup should contain 'drop table ...' (1) or not (0).
+The fifth argument specifies whether the backup should be gzipped (1) or not (0).
+	(You can also enter zip for zip-backups or gzip for gzip-backups.)
+The sixth argument can contain the directory paths you want to backup. They must be separated by
+	pipes (|) and surrounded by ". (FTP must be enabled on the 'configuration' tab!)
+The seventh arguments specifies whether the directory backup is zipped (1) or not (0)
+The eighth argument is the comment which is added to the backup (and also the email if configured)
+	You should surround the comment with " like "This is the comment".
+
+All arguments but the first are optional.
+If you want to use for example the fifth argument, you have to specify all preceding parameters.
+
+
+Examples:
+
+  php backup.php %%ALL%% 1 1 1
+This will backup all databases which can be found with data and table-structure and add the 'drop table ...' command.
+
+  php backup.php db1 1 0 1
+Will backup the table structure of db1 and will add 'drop table ...' but will not save the data nor compress it.
+
+  php backup.php db1,db2 1 1 1 1 "folder1/|../../folder2/|../folder3/folder4/" 1
+Will backup db1 and db2 with data and structure, will add 'drop table ...' and will gzip the backups.
+Also the files in the directories folder1, folder2 and folder 4 will be saved to the FTP server as ZIP file.
+The files in folder3 will NOT be saved, unless the "directory backup with sub-directories"-config attribute is not set.
+
+
+special cron-job example:
+You may notice that your cron jobs will be executed by another user as your webserver. Therefore it may happen,
+that you can't see the backup files created by the cron-job on the import tab of the pMBP web interface. To fix this,
+go to the config-tab and set the system-variable backup_chmod e.g. to 0700.
+
+	MAILTO=john@example.com
+	0 2 * * * php /var/html/phpMyBackupPro/backup.php db1 1 1 1 0 "" 0 "This is a comment"
+	
+This is an example, how to trigger a backup with a cron job which runs every night at 2 am.
+An email will be send to john@example.com with the output of the backup job (error/success messages).
+This will backup databases db1 with data and table-structure and add the 'drop table ...' command. The backup will
+not be compressed and no directories will be backed up. The comment of the backup will be "This is a comment".
