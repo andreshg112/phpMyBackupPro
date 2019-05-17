@@ -161,7 +161,7 @@ if ($selection_ok) {
     $result .= "\$period=(3600*24)" . str_replace(array(';', '$', '+'), '', $_POST['period']) . ";\n";
     $result .= "\$security_key=\"" . ($PMBP_SYS_VAR['security_key']) . "\";\n";
     $result .= "// switch to the phpMyBackupPro " . PMBP_VERSION . " directory\n";
-    $result .= "@chdir(\"" . $_SERVER['DOCUMENT_ROOT'] . "\");\n";
+    // $result .= "@chdir(\"" . $_SERVER['DOCUMENT_ROOT'] . "\");\n";
     $result .= "@include(\"backup.php\");\n";
     $result .= "// switch back to the directory containing this script\n";
     $result .= "@chdir(\"" . $_POST['path'] . "\");\n";
