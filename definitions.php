@@ -25,8 +25,8 @@
 
 // ---- adjust these two lines to your file system. The pathes must be relative to this file! ----- //
 
-$_PMBP_GLOBAL_CONF = "./files/global_conf.php"; // example: $_PMBP_GLOBAL_CONF="../../files/global_conf.php";
-$_PMBP_EXPORT_DIR = "./files/export/"; // example: $_PMBP_EXPORT_DIR="../../files/export/";
+$_PMBP_GLOBAL_CONF = "global_conf.php"; // example: $_PMBP_GLOBAL_CONF="../../files/global_conf.php";
+$_PMBP_EXPORT_DIR = "export/"; // example: $_PMBP_EXPORT_DIR="../../files/export/";
 
 // ---- adjust this line only if you are going to backup from several database servers or if you have to use different accounts ---- //
 
@@ -41,7 +41,7 @@ define('PMBP_GLOBAL_CONF_MU', "global_conf_mu.php"); // example: define('PMBP_GL
 // definitions
 define('PMBP_VERSION', "2.6"); // this is the version of this phpMyBackupPro release
 
-define('PMBP_MAIN_INC', "./functions.inc.php");
+define('PMBP_MAIN_INC', "functions.inc.php");
 define('PMBP_JAVASCRIPTS', "javascripts.js");
 define('PMBP_STYLESHEET_DIR', "stylesheets/");
 define('PMBP_LANGUAGE_DIR', "language/");
